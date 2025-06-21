@@ -11,7 +11,7 @@
 (function () {
     'use strict';
 
-    // 🎯 Playlist IDs to hide or block — only use the part after /playlist/
+    // Playlist IDs to hide or block — only use the part after /playlist/
     const playlistIds = ['id1', 'id2']; // open.spotify.com/playlist/ID
 
     function normalize(str) {
