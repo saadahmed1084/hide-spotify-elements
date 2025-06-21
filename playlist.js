@@ -12,9 +12,7 @@
     'use strict';
 
     // 🎯 Playlist IDs to hide or block — only use the part after /playlist/
-    const playlistIds = [
-        '3uJqTqezFwR4xkVQ0pO7nU'
-    ];
+    const playlistIds = [];
 
     function normalize(str) {
         return str.trim().toLowerCase();
