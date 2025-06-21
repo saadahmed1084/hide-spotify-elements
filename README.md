@@ -1,5 +1,5 @@
 # DISCLAIMER
-These scripts are AI-generated, and the repository owner does not take any credit for authoring them. They have been open-sourced for use by the general public to remove any disturbing or offensive content from their own Spotify Web experience. The repository owner **shall not be held liable** for any misuse of these scripts.
+These scripts are AI-generated, and the repository owner does not take any credit for authoring them. They have been open-sourced for use by the general public to remove any disturbing or offensive content from their own Spotify Web experience. The repository owner **shall not be held liable** for any misuse of these scripts, or any adverse effects arising from their usage.
 
 # Instructions
 - Install the TamperMonkey extension for [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/).
