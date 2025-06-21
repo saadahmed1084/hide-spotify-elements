@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.1
 // @description  Hides specific albums by their Spotify IDs from Spotify Web UI, including Home, Search, etc.
-// @author       You
+// @author       ChatGPT
 // @match        https://open.spotify.com/*
 // @grant        none
 // ==/UserScript==
