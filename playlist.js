@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      2.0
 // @description  Hides specific Spotify playlists from the UI and blocks their pages if accessed directly via link.
-// @author       You
+// @author       ChatGPT
 // @match        https://open.spotify.com/*
 // @grant        none
 // ==/UserScript==
