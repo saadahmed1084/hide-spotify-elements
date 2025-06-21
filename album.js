@@ -12,7 +12,7 @@
     'use strict';
 
     // Replace with one or more album IDs
-    const albumIdsToHide = ['3a9qH2VEsSiOZvMrjaS0Nu'];
+    const albumIdsToHide = ['id1', 'id2']; // open.spotify.com/album/ID
 
     function hideAlbums() {
         const albumLinks = document.querySelectorAll('a[href*="/album/"]');
