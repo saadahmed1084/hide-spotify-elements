@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.1
 // @description  Visually hides specific artist profiles from Spotify Web UI and blocks their pages if opened directly (like user blocking script behavior). Works on search, following, sidebars, and direct profile URLs too.
-// @author       You
+// @author       ChatGPT
 // @match        https://open.spotify.com/*
 // @grant        none
 // ==/UserScript==
