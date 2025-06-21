@@ -11,3 +11,6 @@
 - This only works in your browser, not on mobile or desktop apps.
 - It doesn’t prevent interactions — it just visually hides unwanted users.
 - If Spotify’s UI structure changes, the script may need updates.
+
+# Side Effect
+These scripts currently hide **all** content from a list containing any of the specified items. I will be accepting pull requests that modify the code to hide only the specified items from said lists.
