@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.1
 // @description  Visually hides a specific user profile from Spotify Web UI (followers, following, sidebars, etc.)
-// @author       You
+// @author       ChatGPT
 // @match        https://open.spotify.com/*
 // @grant        none
 // ==/UserScript==
