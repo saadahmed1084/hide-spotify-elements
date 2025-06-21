@@ -1,4 +1,5 @@
-**DISCLAIMER:** These scripts are AI-generated, and I do not intend to take any credit for authoring them.
+# DISCLAIMER
+These scripts are AI-generated, and I do not intend to take any credit for authoring them.
 
 # Instructions
 - Install the TamperMonkey extension for [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/).
