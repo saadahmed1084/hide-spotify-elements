@@ -12,7 +12,7 @@ These scripts are AI-generated, and the repository owner does not take any credi
 
 # Notes
 - These scripts work only on Spotify Web, not on mobile or desktop apps.
-- These scripts don’t prevent interactions — it just visually hides unwanted users.
+- These scripts don’t prevent interactions — they just visually hide unwanted users.
 - The scripts may need updates if Spotify's UI structure changes.
 
 # Pull Requests
