@@ -15,5 +15,7 @@ These scripts are AI-generated, and the repository owner does not take any credi
 - These scripts don’t prevent interactions — it just visually hides unwanted users.
 - The scripts may need updates if Spotify's UI structure changes.
 
-# Side Effect
-These scripts have been designed to hide the specified pages, as well as any links to them (such as from followers/following) on Spotify Web. However, they currently hide **all** content from a list containing any of the specified items. I will be accepting pull requests that modify the code to hide only the specified items from said lists.
+# Pull Requests
+- I generated these scripts to completely hide certain stuff from Spotify Web, including from lists of profiles, playlists etc.
+- The problem is that they hide the ENTIRE list instead of the specific item within it.
+- If you can modify them to fix this issue (hide the specific item from the list without making the whole list vanish), shoot me a pull request.
