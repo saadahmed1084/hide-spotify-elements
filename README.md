@@ -9,6 +9,7 @@ These scripts are AI-generated, and the repository owner does not take any credi
 - Update the IDs in the list as per your needs.
 - Save and reload Spotify Web. Make sure the script is enabled in the extension settings.
 - The scripts will remain enabled every time you open Spotify Web thereafter, unless manually disabled.
+- You will need to reconfigure this setup for a separate user profile on your browser.
 
 # Notes
 - These scripts work only on Spotify Web, not on mobile or desktop apps.
