@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Hide Spotify Artist Profile
+// @name         Hide & Block Specific Spotify Artists
 // @namespace    http://tampermonkey.net/
-// @version      1.1
-// @description  Visually hides specific artist profiles from Spotify Web UI and blocks their pages if opened directly (like user blocking script behavior). Works on search, following, sidebars, and direct profile URLs too.
+// @version      2.0
+// @description  Hides specified artist profiles in Spotify UI and blocks direct navigation to their pages.
 // @author       ChatGPT
 // @match        https://open.spotify.com/*
 // @grant        none
@@ -11,56 +11,71 @@
 (function () {
     'use strict';
 
-    // Replace with the target artist Spotify IDs
-    const blockedArtistIds = ['id1', 'id2']; // open.spotify.com/artist/ID
+    // --- PUT ARTIST IDS HERE ---
+    const blockedArtistIds = [
+        '5cj0lLjcoR7YOSnhnX0Po5', // Doja Cat
+        '25uiPmTg16RbhZWAqwLBy5', // Charli XCX,
+        '45dkTj5sMRSjrmBSBeiHym'
+    ];
 
-    // Hides artist tiles/cards from UI
-    function hideArtistProfileElements() {
-        const artistLinks = document.querySelectorAll('a[href*="/artist/"]');
-        const textElements = document.querySelectorAll('div[dir="auto"], span');
+    const normalize = s => (s || '').trim().toLowerCase();
 
-        artistLinks.forEach(link => {
-            blockedArtistIds.forEach(artistId => {
-                if (link.href.includes(`/artist/${artistId}`)) {
-                    const parent = link.closest('div[data-testid], div[class*="EntityRow"], li, div[class*="sidebar"]');
-                    if (parent) parent.style.display = 'none';
-                }
-            });
-        });
-
-        textElements.forEach(el => {
-            const text = el.textContent.trim().toLowerCase();
-            blockedArtistIds.forEach(artistId => {
-                if (text.includes(artistId.toLowerCase())) {
-                    const parent = el.closest('div[data-testid], div[class*="EntityRow"], li, div[class*="sidebar"]');
-                    if (parent) parent.style.display = 'none';
-                }
-            });
-        });
-    }
-
-    // Blocks the actual artist profile page if opened directly
-    function blockArtistPageIfOpened() {
-        const path = window.location.pathname.toLowerCase();
-
-        blockedArtistIds.forEach(artistId => {
-            if (path === `/artist/${artistId.toLowerCase()}`) {
-                document.body.innerHTML = `
-                    <div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#121212; color:white; font-family:sans-serif;">
-                        <div>
-                            <h1 style="font-size:24px; margin-bottom:10px;">🚫 Blocked Artist</h1>
-                            <p>You have hidden this artist’s profile from view.</p>
-                        </div>
-                    </div>
-                `;
-                document.title = 'Blocked Artist';
+    // --- REDIRECT HANDLER ---
+    function checkAndRedirect() {
+        const url = location.href.toLowerCase();
+        for (const id of blockedArtistIds) {
+            if (url.includes(`/artist/${normalize(id)}`)) {
+                console.log('[SpotifyBlocker] Redirected from blocked artist:', id);
+                window.location.replace('https://open.spotify.com/'); // redirect to Home
+                return true;
             }
-        });
+        }
+        return false;
     }
 
-    // Spotify is dynamically loaded — run checks repeatedly
-    setInterval(() => {
-        hideArtistProfileElements();
-        blockArtistPageIfOpened();
-    }, 1000);
+    // Run on load + history changes
+    checkAndRedirect();
+    const pushState = history.pushState;
+    history.pushState = function () {
+        pushState.apply(this, arguments);
+        setTimeout(checkAndRedirect, 50);
+    };
+    window.addEventListener('popstate', checkAndRedirect);
+    window.addEventListener('hashchange', checkAndRedirect);
+
+    // --- HIDE UI ITEMS ---
+    const hiddenNodes = new WeakSet();
+
+    function hideNode(node) {
+        if (!node || hiddenNodes.has(node)) return;
+        node.style.transition = 'opacity .12s ease';
+        node.style.opacity = '0';
+        setTimeout(() => { node.style.display = 'none'; }, 120);
+        hiddenNodes.add(node);
+    }
+
+    function tryHideArtistLink(link) {
+        const href = normalize(link.href || '');
+        for (const id of blockedArtistIds) {
+            if (href.includes(`/artist/${normalize(id)}`)) {
+                // Hide closest row/card/list item
+                const container = link.closest(
+                    '[data-testid="entity-row"], [data-testid="entityRow"], div[class*="EntityRow"], ' +
+                    'div[class*="gridCard"], div[data-testid*="card"], div[role="listitem"], li, section, article'
+                ) || link;
+                hideNode(container);
+                return;
+            }
+        }
+    }
+
+    function scanAndHideAll() {
+        const links = document.querySelectorAll('a[href*="/artist/"]');
+        for (const link of links) tryHideArtistLink(link);
+    }
+
+    const observer = new MutationObserver(scanAndHideAll);
+    observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
+
+    scanAndHideAll();
 })();
