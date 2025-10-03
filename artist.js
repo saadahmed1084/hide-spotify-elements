@@ -11,12 +11,8 @@
 (function () {
     'use strict';
 
-    // --- PUT ARTIST IDS HERE ---
-    const blockedArtistIds = [
-        '5cj0lLjcoR7YOSnhnX0Po5', // Doja Cat
-        '25uiPmTg16RbhZWAqwLBy5', // Charli XCX,
-        '45dkTj5sMRSjrmBSBeiHym'
-    ];
+    // --- PUT ARTIST IDS HERE (open.spotify.com/artist/artistid) ---
+    const blockedArtistIds = [ 'artist1', 'artist2' ];
 
     const normalize = s => (s || '').trim().toLowerCase();
 
